@@ -1,20 +1,12 @@
 diff -u pal-0.4.3/debian/rules pal-0.4.3/debian/rules
 --- pal-0.4.3/debian/rules
 +++ pal-0.4.3/debian/rules
-@@ -6,6 +6,7 @@
- #export DH_VERBOSE=1
- 
- include /usr/share/quilt/quilt.make
-+include /usr/share/dpkg/buildtools.mk
- 
- CFLAGS = -Wall -g
- 
-@@ -24,7 +25,7 @@
+@@ -24,7 +24,7 @@
  build-arch: build-stamp
  build-stamp: $(QUILT_STAMPFN)
  	dh_testdir
 -	$(MAKE) "CFLAGS=$(CFLAGS)"
-+	$(MAKE) "CFLAGS=$(CFLAGS)" CC="$(CC)" PKG_CONFIG_PATH=/usr/lib/$(DEB_HOST_GNU_TYPE)/pkgconfig
++	dh_auto_build -- "CFLAGS=$(CFLAGS)" PKG_CONFIG_PATH=/usr/lib/$(DEB_HOST_GNU_TYPE)/pkgconfig
  	touch $@
  
  .PHONY: clean
