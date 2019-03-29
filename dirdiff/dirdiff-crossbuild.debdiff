@@ -1,0 +1,12 @@
+diff -u dirdiff-2.1/debian/rules dirdiff-2.1/debian/rules
+--- dirdiff-2.1/debian/rules
++++ dirdiff-2.1/debian/rules
+@@ -18,7 +18,7 @@
+ build-indep: build-stamp
+ build-stamp: patch
+ 	dh_testdir
+-	$(MAKE)
++	dh_auto_build
+ 	touch build-stamp
+ 
+ clean: unpatch
