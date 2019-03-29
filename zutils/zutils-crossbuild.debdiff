@@ -1,0 +1,14 @@
+diff -Nru zutils-1.8/debian/rules zutils-1.8/debian/rules
+--- zutils-1.8/debian/rules	2019-01-27 09:53:47.000000000 +0000
++++ zutils-1.8/debian/rules	2019-02-03 19:14:35.000000000 +0000
+@@ -17,8 +17,8 @@
+ 
+ 	# manpage
+ 	mkdir -p debian/zutils/usr/share/man/man1
+-	help2man --name 'search compressed and uncompressed files' debian/zutils/bin/zegrep > debian/zutils/usr/share/man/man1/zegrep.1
+-	help2man --name 'search compressed and uncompressed files' debian/zutils/bin/zfgrep > debian/zutils/usr/share/man/man1/zfgrep.1
++	help2man --no-discard-stderr --name 'search compressed and uncompressed files' debian/zutils/bin/zegrep > debian/zutils/usr/share/man/man1/zegrep.1
++	help2man --no-discard-stderr --name 'search compressed and uncompressed files' debian/zutils/bin/zfgrep > debian/zutils/usr/share/man/man1/zfgrep.1
+ 
+ 	# removing unused files
+ 	rm -f debian/zutils/usr/share/info/dir*

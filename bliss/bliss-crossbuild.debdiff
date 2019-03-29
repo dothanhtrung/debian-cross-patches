@@ -1,0 +1,13 @@
+diff -Nru bliss-0.73/debian/adhoc/Makefile bliss-0.73/debian/adhoc/Makefile
+--- bliss-0.73/debian/adhoc/Makefile	2018-11-14 09:47:48.000000000 +0000
++++ bliss-0.73/debian/adhoc/Makefile	2018-11-14 10:14:04.000000000 +0000
+@@ -14,7 +14,8 @@
+ 	--version-option=-version \
+ 	--help-option=-help \
+ 	--libtool \
+-	--no-info
++	--no-info \
++	--no-discard-stderr
+ 
+ default:
+ 
