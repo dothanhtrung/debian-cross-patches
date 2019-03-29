@@ -1,0 +1,21 @@
+diff -Nru mdadm-4.1/debian/rules mdadm-4.1/debian/rules
+--- mdadm-4.1/debian/rules	2019-01-16 01:23:53.000000000 +0700
++++ mdadm-4.1/debian/rules	2019-01-16 01:23:53.000000000 +0700
+@@ -18,7 +18,7 @@
+ 
+ build-stamp:
+ 	dh_testdir
+-	$(MAKE) all $(BUILDFLAGS) CONFFILE=/etc/mdadm/mdadm.conf CONFFILE2=/etc/mdadm.conf
++	dh_auto_build -- all $(BUILDFLAGS) CONFFILE=/etc/mdadm/mdadm.conf CONFFILE2=/etc/mdadm.conf
+ 	touch $@
+ 
+ # udeb rules should go, the only diff is the conffile location,
+@@ -34,7 +34,7 @@
+ 
+ udeb/build-stamp: udeb/dir-stamp
+ 	dh_testdir
+-	$(MAKE) -C udeb mdadm mdmon $(BUILDFLAGS) CONFFILE=/tmp/mdadm.conf
++	dh_auto_build -- -C udeb mdadm mdmon $(BUILDFLAGS) CONFFILE=/tmp/mdadm.conf
+ 	touch $@
+ 
+ clean:

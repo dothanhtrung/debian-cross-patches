@@ -1,0 +1,47 @@
+diff -u pixmap-2.6pl4/debian/control pixmap-2.6pl4/debian/control
+--- pixmap-2.6pl4/debian/control
++++ pixmap-2.6pl4/debian/control
+@@ -3,7 +3,7 @@
+ Priority: optional
+ Maintainer: Paul Slootman <paul@debian.org>
+ Standards-Version: 3.7.3.0
+-Build-Depends: xutils-dev, libxaw7-dev, xbitmaps
++Build-Depends: xutils-dev, libxaw7-dev, xbitmaps, debhelper(>=9) 
+ 
+ Package: pixmap
+ Depends: ${shlibs:Depends}
+diff -u pixmap-2.6pl4/debian/rules pixmap-2.6pl4/debian/rules
+--- pixmap-2.6pl4/debian/rules
++++ pixmap-2.6pl4/debian/rules
+@@ -14,7 +14,6 @@
+ # the previous revision of the ``Debianized'' source package and context diff
+ # in the parent directory.
+ 
+-CC = gcc
+ # CFLAGS = -O2 -g # doesn't do much good with Imakefile etc...
+ 
+ # The name of the package
+@@ -31,7 +30,7 @@
+ 	rm -f clean
+ 	make Makefiles
+ 	perl -i -pe 's/ ..SMLIB. ..ICELIB.//' Makefile # don't link with -lSM -lICE
+-	make
++	dh_auto_build
+ 	touch stamp-build
+ 
+ clean:
+@@ -60,8 +59,8 @@
+ 	install -g root -m 755 -o root    pixmap debian/tmp/usr/bin/pixmap
+ else
+ 	# see changelog entry for 2.6pl4-13 about the strip here
+-	strip pixmap
+-	install -g root -m 755 -o root -s pixmap debian/tmp/usr/bin/pixmap
++	$(DEB_HOST_GNU_TYPE)-strip pixmap
++	install -g root -m 755 -o root pixmap debian/tmp/usr/bin/pixmap
+ endif
+ 	install -g root -m 644 -o root Pixmap.ad  \
+ 		debian/tmp/etc/X11/app-defaults/Pixmap
+--- pixmap-2.6pl4.orig/debian/compat
++++ pixmap-2.6pl4/debian/compat
+@@ -0,0 +1 @@
++9
