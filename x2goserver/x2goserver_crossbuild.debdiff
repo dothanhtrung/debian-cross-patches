@@ -1,0 +1,22 @@
+diff -Nru x2goserver-4.1.0.3/debian/rules x2goserver-4.1.0.3/debian/rules
+--- x2goserver-4.1.0.3/debian/rules	2018-11-29 17:04:06.000000000 +0700
++++ x2goserver-4.1.0.3/debian/rules	2019-01-07 03:30:04.000000000 +0700
+@@ -6,14 +6,16 @@
+ DPKG_EXPORT_BUILDFLAGS = 1
+ include /usr/share/dpkg/buildflags.mk
+ 
++include /usr/share/dpkg/buildtools.mk
++
+ %:
+ 	PREFIX=/usr NXLIBDIR=$(NXLIBDIR) dh ${@}
+ 
+ override_dh_auto_build:
+-	PREFIX=/usr NXLIBDIR=$(NXLIBDIR) PERL_INSTALLDIRS=vendor dh_auto_build
++	PREFIX=/usr NXLIBDIR=$(NXLIBDIR) PERL_INSTALLDIRS=vendor dh_auto_build -- CC=$(CC)
+ 
+ override_dh_auto_install:
+-	$(MAKE) -f Makefile build-arch
++	dh_auto_build -- CC=$(CC) -f Makefile build-arch
+ 	PREFIX=/usr NXLIBDIR=$(NXLIBDIR) dh_auto_install
+ 
+ override_dh_install:

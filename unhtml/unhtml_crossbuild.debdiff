@@ -1,0 +1,12 @@
+diff -Nru unhtml-2.3.9/debian/rules unhtml-2.3.9/debian/rules
+--- unhtml-2.3.9/debian/rules	2012-06-24 01:42:50.000000000 +0700
++++ unhtml-2.3.9/debian/rules	2017-01-21 23:35:10.000000000 +0700
+@@ -10,7 +10,7 @@
+ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+ 
+ override_dh_auto_build:
+-	$(MAKE) CFLAGS="$(FLAGS)"
++	dh_auto_build -- CFLAGS="$(FLAGS)"
+ 
+ override_dh_auto_install:
+ 	install -m 755 -D $(PACKAGE) debian/$(PACKAGE)/usr/bin/$(PACKAGE)

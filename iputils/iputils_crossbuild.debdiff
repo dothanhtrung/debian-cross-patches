@@ -1,0 +1,17 @@
+diff -Nru iputils-20180629/debian/rules iputils-20180629/debian/rules
+--- iputils-20180629/debian/rules	2018-08-03 23:53:09.000000000 +0700
++++ iputils-20180629/debian/rules	2018-08-03 23:53:09.000000000 +0700
+@@ -17,11 +17,11 @@
+ 
+ build-arch: configure
+ 	dh_testdir
+-	$(MAKE) $(TARGETS)
++	dh_auto_build -- $(TARGETS)
+ 
+ build-indep: configure
+ 	dh_testdir
+-	$(MAKE) -C doc man
++	dh_auto_build -- -C doc man
+ 
+ build: build-arch build-indep
+ 
