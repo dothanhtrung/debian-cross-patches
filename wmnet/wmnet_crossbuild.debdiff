@@ -1,0 +1,12 @@
+diff -Nru wmnet-1.06/debian/rules wmnet-1.06/debian/rules
+--- wmnet-1.06/debian/rules	2012-03-04 03:13:23.000000000 +0700
++++ wmnet-1.06/debian/rules	2012-03-04 03:20:19.000000000 +0700
+@@ -10,7 +10,7 @@
+ 	dh_testdir
+ 
+ 	xmkmf
+-	make
++	dh_auto_build
+ 
+ 	touch build-stamp
+ 

@@ -1,0 +1,14 @@
+diff -Nru vmfs-tools-0.2.5/debian/rules vmfs-tools-0.2.5/debian/rules
+--- vmfs-tools-0.2.5/debian/rules	2012-03-25 15:45:08.000000000 +0700
++++ vmfs-tools-0.2.5/debian/rules	2012-03-25 15:47:13.000000000 +0700
+@@ -1,6 +1,10 @@
+ #!/usr/bin/make -f
+ 
++include /usr/share/dpkg/buildtools.mk
++
+ export NO_STRIP = 1
+ 
++override_dh_auto_build:
++	dh_auto_build -- CC=$(CC)
+ %:
+ 	dh $@

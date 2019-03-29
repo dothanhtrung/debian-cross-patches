@@ -1,0 +1,20 @@
+diff -Nru analog-6.0/debian/rules analog-6.0/debian/rules
+--- analog-6.0/debian/rules	2016-11-10 22:16:12.000000000 +0700
++++ analog-6.0/debian/rules	2016-11-10 22:16:12.000000000 +0700
+@@ -1,5 +1,7 @@
+ #!/usr/bin/make -f
+ 
++include /usr/share/dpkg/buildtools.mk
++
+ export BUILD_DATE = $(shell LC_ALL=C date -u --date="`dpkg-parsechangelog -SDate`" +'%b %e %Y %H:%M:%S')
+ 
+ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+@@ -11,7 +13,7 @@
+ override_dh_auto_build:
+ 	# NOTE: settting things to "" makes analog look for config files
+ 	# in the current directory if no path is specified. See anlghead.h
+-	$(MAKE) DEFS='-DHOSTNAME=\"Debian\ Linux\ System\" \
++	dh_auto_build -- DEFS='-DHOSTNAME=\"Debian\ Linux\ System\" \
+ 		-DHOSTURL=\"/\" \
+ 		-DLOGSDIR=\"/var/log/apache/\" \
+ 		-DLOGFILE=\"access.log\" \
