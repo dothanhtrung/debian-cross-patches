@@ -1,0 +1,39 @@
+diff -Naur orig/xcircuit-3.9.73+dfsg.1/debian/patches/fix-cross-compile.patch xcircuit-3.9.73+dfsg.1/debian/patches/fix-cross-compile.patch
+--- orig/xcircuit-3.9.73+dfsg.1/debian/patches/fix-cross-compile.patch	1970-01-01 08:00:00.000000000 +0800
++++ xcircuit-3.9.73+dfsg.1/debian/patches/fix-cross-compile.patch	2019-03-13 15:11:42.664492302 +0700
+@@ -0,0 +1,16 @@
++--- orig/xcircuit-3.9.73+dfsg.1/Makefile.am	2019-03-13 11:32:52.000000000 +0700
+++++ xcircuit-3.9.73+dfsg.1/Makefile.am	2019-03-13 14:59:45.000000000 +0700
++@@ -130,8 +130,12 @@
++ CONSOLE = tkcon.tcl
++ CONSOLE_SCRIPT = console.tcl
++ 
+++menudep.o:
+++	$(NATIVE_CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+++        $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) menudep.c -c -o menudep.o
+++	
++ menudep$(EXEEXT): menudep.o
++-	$(CC) -o $@ menudep.o
+++	$(NATIVE_CC) -o $@ menudep.o
++ 
++ menudep.h: menudep$(EXEEXT)
++ 	./menudep$(EXEEXT)
+diff -Naur orig/xcircuit-3.9.73+dfsg.1/debian/patches/series xcircuit-3.9.73+dfsg.1/debian/patches/series
+--- orig/xcircuit-3.9.73+dfsg.1/debian/patches/series	2018-11-02 05:32:47.000000000 +0700
++++ xcircuit-3.9.73+dfsg.1/debian/patches/series	2019-03-13 15:12:00.464492113 +0700
+@@ -3,3 +3,4 @@
+ 05_fix_string_format.patch
+ 0005-Remove-asg.patch
+ 0005-Spelling-fixes.patch
++fix-cross-compile.patch
+diff -Naur orig/xcircuit-3.9.73+dfsg.1/debian/rules xcircuit-3.9.73+dfsg.1/debian/rules
+--- orig/xcircuit-3.9.73+dfsg.1/debian/rules	2018-11-02 05:32:47.000000000 +0700
++++ xcircuit-3.9.73+dfsg.1/debian/rules	2019-03-13 15:11:34.400492390 +0700
+@@ -7,6 +7,7 @@
+ 
+ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+ 
++export NATIVE_CC = $(DEB_BUILD_GNU_TYPE)-gcc
+ 
+ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+ 

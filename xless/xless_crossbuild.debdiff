@@ -1,0 +1,28 @@
+diff -u xless-1.7/debian/rules xless-1.7/debian/rules
+--- xless-1.7/debian/rules
++++ xless-1.7/debian/rules
+@@ -6,12 +6,14 @@
+ # Uncomment this to turn on verbose mode.
+ #export DH_VERBOSE=1
+ 
++include /usr/share/dpkg/buildtools.mk
++
+ build: build-stamp
+ build-stamp:
+ 	dh_testdir
+ 
+ 	# Add here commands to compile the package.
+-	$(MAKE) -f Makefile.debian
++	dh_auto_build -- -f Makefile.debian
+ 
+ 	touch build-stamp
+ 
+@@ -32,7 +34,7 @@
+ 	dh_installdirs
+ 
+ 	# Add here commands to install the package into debian/tmp.
+-	$(MAKE) -f Makefile.debian install DESTDIR=$(CURDIR)/debian/xless
++	$(MAKE) CC=$(CC) -f Makefile.debian install DESTDIR=$(CURDIR)/debian/xless
+ 
+ 	touch install-stamp
+ 

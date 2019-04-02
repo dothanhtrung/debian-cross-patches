@@ -1,0 +1,26 @@
+diff -Nru xjig-2.4/debian/rules xjig-2.4/debian/rules
+--- xjig-2.4/debian/rules	2018-03-27 23:29:25.000000000 +0700
++++ xjig-2.4/debian/rules	2018-03-27 23:29:25.000000000 +0700
+@@ -8,9 +8,10 @@
+ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+ DPKG_EXPORT_BUILDFLAGS = 1
+ include /usr/share/dpkg/buildflags.mk
+-CFLAGS += -Wall
+ 
+-CXX=c++ -g -Wall
++include /usr/share/dpkg/buildtools.mk
++
++CFLAGS += -Wall
+ 
+ %:
+ 	dh $@
+@@ -21,8 +22,7 @@
+ 	make depend # djh
+ 	cp xjig.man xjig.6
+ 	if [ -x configure ]; then ./configure --prefix=/usr/games; fi
+-	make CXX="$(CXX) $(CPPFLAGS) $(LDFLAGS)"
+-	dh_auto_build
++	dh_auto_build -- CXX="$(CXX) -g -Wall $(CPPFLAGS) $(LDFLAGS)"
+ 
+ override_dh_install:
+ 	make install CXX="$(CXX)" --remove-section=.comment prefix=`pwd`/debian/xjig/usr/games ;\
