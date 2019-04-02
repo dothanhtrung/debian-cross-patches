@@ -1,0 +1,41 @@
+diff -Nru xmedcon-0.16.1+dfsg/debian/patches/fix-error-when-cross-compile.patch xmedcon-0.16.1+dfsg/debian/patches/fix-error-when-cross-compile.patch
+--- xmedcon-0.16.1+dfsg/debian/patches/fix-error-when-cross-compile.patch	1970-01-01 08:00:00.000000000 +0800
++++ xmedcon-0.16.1+dfsg/debian/patches/fix-error-when-cross-compile.patch	2019-01-26 00:59:09.000000000 +0700
+@@ -0,0 +1,17 @@
++--- orig/xmedcon-0.16.1+dfsg/libs/dicom/Makefile.am	2018-10-07 05:59:22.000000000 +0700
+++++ xmedcon-0.16.1+dfsg/libs/dicom/Makefile.am	2019-03-19 09:57:53.139182636 +0700
++@@ -65,6 +65,14 @@
++ noinst_LTLIBRARIES = libdicom.la
++ endif
++ 
+++parse.$(OBJEXT):
+++	$(NATIVE_CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+++        $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c parse.c
+++
+++parse$(EXEEXT): $(parse_OBJECTS) $(parse_DEPENDENCIES) $(EXTRA_parse_DEPENDENCIES)
+++	@rm -f parse$(EXEEXT)
+++	$(NATIVE_CC) $(AM_CFLAGS) $(CFLAGS) \
+++        $(AM_LDFLAGS) $(LDFLAGS) -o $@ $(parse_OBJECTS) $(parse_LDADD) $(LIBS)
++ basic.c: $(DICTSQ)
++ 
++ dictionary.c: $(DICTDATA)
+diff -Nru xmedcon-0.16.1+dfsg/debian/patches/series xmedcon-0.16.1+dfsg/debian/patches/series
+--- xmedcon-0.16.1+dfsg/debian/patches/series	2019-01-26 00:59:09.000000000 +0700
++++ xmedcon-0.16.1+dfsg/debian/patches/series	2019-01-26 00:59:09.000000000 +0700
+@@ -2,3 +2,4 @@
+ add_gtk_libraries_to_linker.patch
+ use_debian_packaged_niftilib.patch
+ cross.patch
++fix-error-when-cross-compile.patch
+diff -Nru xmedcon-0.16.1+dfsg/debian/rules xmedcon-0.16.1+dfsg/debian/rules
+--- xmedcon-0.16.1+dfsg/debian/rules	2019-01-26 00:59:09.000000000 +0700
++++ xmedcon-0.16.1+dfsg/debian/rules	2019-01-26 00:59:09.000000000 +0700
+@@ -6,6 +6,8 @@
+ 
+ export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+ 
++export NATIVE_CC = $(DEB_BUILD_GNU_TYPE)-gcc
++
+ %:
+ 	dh $@
+ 

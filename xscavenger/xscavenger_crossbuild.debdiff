@@ -1,0 +1,33 @@
+diff -Nru xscavenger-1.4.5/debian/rules xscavenger-1.4.5/debian/rules
+--- xscavenger-1.4.5/debian/rules	2017-02-17 01:11:13.000000000 +0700
++++ xscavenger-1.4.5/debian/rules	2017-02-17 01:11:13.000000000 +0700
+@@ -17,9 +17,10 @@
+ # The name of the package (for example, `Emacs').
+ package   := xscavenger
+ 
++include /usr/share/dpkg/buildtools.mk
++
+ # Configuration variables (these should be pretty generic)
+ #CC = cc
+-CC = gcc
+ CFLAGS = `dpkg-buildflags --get CFLAGS` \
+ 	`dpkg-buildflags --get LDFLAGS` \
+ 	`pkg-config --cflags --libs alsa` \
+@@ -73,7 +74,7 @@
+ 	$(checkdir)
+ 	# build package
+ 	test -f stamp-xmkmf || $(MAKE) -f debian/rules xmkmf
+-	cd src && $(MAKE) CCOPTIONS="$(CFLAGS)"
++	cd src && $(MAKE) CC=$(CC) CCOPTIONS="$(CFLAGS)"
+ 	touch stamp-build
+ 
+ clean:
+@@ -108,7 +109,7 @@
+ 
+ 	cd src && $(MAKE) install DESTDIR=../debian/tmp
+ 	[ "$(DONTSTRIP)" != true ] || \
+-		strip -s -R.note -R.comment	debian/tmp$(BINDIR)/xscavenger
++		$(DEB_HOST_GNU_TYPE)-strip -s -R.note -R.comment	debian/tmp$(BINDIR)/xscavenger
+ 
+ 	$(install_file)		src/scavenger.6 debian/tmp$(MAN6DIR)/xscavenger.6
+ 	gzip -n -9frq		debian/tmp$(MANDIR)/.

@@ -1,0 +1,12 @@
+diff -u xmix-2.1/debian/rules xmix-2.1/debian/rules
+--- xmix-2.1/debian/rules
++++ xmix-2.1/debian/rules
+@@ -20,7 +20,7 @@
+ 	dh_testdir
+ 
+ 	xmkmf
+-	$(MAKE) LOCAL_LDFLAGS="$(LDFLAGS)"
++	dh_auto_build -- LOCAL_LDFLAGS="$(LDFLAGS)"
+ 
+ 	touch build-stamp
+ 

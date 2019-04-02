@@ -1,0 +1,12 @@
+diff -u xmille-2.0/debian/rules xmille-2.0/debian/rules
+--- xmille-2.0/debian/rules
++++ xmille-2.0/debian/rules
+@@ -11,7 +11,7 @@
+ 
+ 	xmkmf
+ 	$(MAKE) Makefiles
+-	$(MAKE)
++	dh_auto_build
+ 
+ 	touch build-stamp
+ 
