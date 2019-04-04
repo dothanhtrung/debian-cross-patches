@@ -1,0 +1,12 @@
+diff -Nru gspiceui-1.1.00+dfsg/debian/rules gspiceui-1.1.00+dfsg/debian/rules
+--- gspiceui-1.1.00+dfsg/debian/rules	2018-01-25 09:45:49.000000000 +0000
++++ gspiceui-1.1.00+dfsg/debian/rules	2018-01-25 09:45:49.000000000 +0000
+@@ -17,7 +17,7 @@
+ 	dh $@
+ 
+ override_dh_auto_build:
+-	CXXFLAGS="$(CXXFLAGS)" LDFLAGS="$(LDFLAGS)" $(MAKE)
++	dh_auto_build -- CC="$(CC)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" 
+ 
+ override_dh_auto_install:
+ 	$(MAKE) DESTDIR=$(CURDIR)/debian/gspiceui/usr install

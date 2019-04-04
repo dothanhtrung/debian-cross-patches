@@ -1,0 +1,12 @@
+diff -Nru gif2png-2.5.8/debian/rules gif2png-2.5.8/debian/rules
+--- gif2png-2.5.8/debian/rules	2012-06-02 09:34:24.000000000 +0000
++++ gif2png-2.5.8/debian/rules	2012-06-02 09:31:11.000000000 +0000
+@@ -36,7 +36,7 @@
+ 	dh_testdir
+ 
+ 	chmod 755 configure
+-	./configure --prefix=/usr CFLAGS="$(CFLAGS)"
++	dh_auto_configure -- --prefix=/usr CFLAGS="$(CFLAGS)"
+ 	# Add here commands to compile the package.
+ 	$(MAKE)
+ 	# Create German manpages at build time, so we need only .xml in .diff.gz

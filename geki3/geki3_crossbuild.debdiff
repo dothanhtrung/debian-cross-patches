@@ -1,0 +1,12 @@
+diff -u geki3-1.0.3/debian/rules geki3-1.0.3/debian/rules
+--- geki3-1.0.3/debian/rules
++++ geki3-1.0.3/debian/rules
+@@ -16,7 +16,7 @@
+ 	&& touch configure \
+ 	&& touch config.h.in \
+ 	&& touch `find . -name Makefile.in`
+-	./configure --prefix=/usr --mandir=$${prefix}/share/man \
++	dh_auto_configure -- --prefix=/usr --mandir=$${prefix}/share/man \
+ 		--infodir=$${prefix}/share/info
+ 	$(MAKE)
+ 	touch build-stamp
