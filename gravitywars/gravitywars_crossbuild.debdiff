@@ -1,0 +1,12 @@
+diff -Nru gravitywars-1.102/debian/rules gravitywars-1.102/debian/rules
+--- gravitywars-1.102/debian/rules	2015-11-21 20:34:43.000000000 +0000
++++ gravitywars-1.102/debian/rules	2015-11-21 20:27:21.000000000 +0000
+@@ -4,7 +4,7 @@
+ 	dh $@
+ 
+ override_dh_auto_build:
+-	$(MAKE) USE_SDL=1
++	dh_auto_build -- USE_SDL=1
+ 
+ override_dh_install:
+ 	cp GravityWars101 $(CURDIR)/debian/gravitywars/usr/games/gravitywars

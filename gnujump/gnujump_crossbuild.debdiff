@@ -1,0 +1,12 @@
+diff -Nru gnujump-1.0.8/debian/rules gnujump-1.0.8/debian/rules
+--- gnujump-1.0.8/debian/rules	2015-08-16 11:21:00.000000000 +0000
++++ gnujump-1.0.8/debian/rules	2015-08-16 16:13:17.000000000 +0000
+@@ -7,7 +7,7 @@
+ 	dh $@ --with autoreconf
+ 
+ override_dh_auto_configure:
+-	./configure --prefix=/usr --bindir=/usr/games --datadir=/usr/share/games
++	dh_auto_configure -- --prefix=/usr --bindir=/usr/games --datadir=/usr/share/games
+ 
+ override_dh_auto_build:
+ 	dh_auto_build
