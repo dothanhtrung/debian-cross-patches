@@ -1,0 +1,12 @@
+diff -Nru shotwell-0.30.1/debian/control shotwell-0.30.1/debian/control
+--- shotwell-0.30.1/debian/control	2018-09-30 15:58:10.000000000 +0000
++++ shotwell-0.30.1/debian/control	2018-09-30 17:02:22.000000000 +0000
+@@ -31,7 +31,7 @@
+  libxml2 (>= 2.6.32),
+  meson,
+  ninja-build,
+- valac (>= 0.22.0)
++ valac:native (>= 0.22.0)
+ Standards-Version: 4.2.1
+ Homepage: https://wiki.gnome.org/Apps/Shotwell
+ Vcs-Git: git://jff.email/opt/git/shotwell.git

@@ -1,0 +1,15 @@
+diff -Nru shhmsg-1.4.2/debian/rules shhmsg-1.4.2/debian/rules
+--- shhmsg-1.4.2/debian/rules	2015-08-01 11:47:33.000000000 +0000
++++ shhmsg-1.4.2/debian/rules	2015-08-01 09:33:16.000000000 +0000
+@@ -13,9 +13,9 @@
+ 
+ build-stamp:
+ 	dh_testdir
+-	CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" $(MAKE)
++	dh_auto_build -- CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" 
+ 	$(MAKE) clean
+-	SHARED=1 CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" $(MAKE)
++	dh_auto_build -- SHARED=1 CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" 
+ 	touch build-stamp
+ 
+ clean:

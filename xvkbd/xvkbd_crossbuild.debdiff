@@ -1,0 +1,12 @@
+diff -Nru xvkbd-3.9/debian/rules xvkbd-3.9/debian/rules
+--- xvkbd-3.9/debian/rules	2018-02-25 09:20:35.000000000 +0000
++++ xvkbd-3.9/debian/rules	2018-02-25 09:20:35.000000000 +0000
+@@ -10,7 +10,7 @@
+ 
+ override_dh_auto_build:
+ 	/usr/bin/xmkmf
+-	$(MAKE) THREADS_CFLAGS="$(CFLAGS)" THREADS_CPPFLAGS="$(CPPFLAGS)" THREADS_CXXFLAGS="$(CXXFLAGS)" THREADS_LDFLAGS="$(LDFLAGS)"
++	dh_auto_build -- THREADS_CFLAGS="$(CFLAGS)" THREADS_CPPFLAGS="$(CPPFLAGS)" THREADS_CXXFLAGS="$(CXXFLAGS)" THREADS_LDFLAGS="$(LDFLAGS)"
+ 
+ override_dh_auto_install:
+ 	dh_auto_install

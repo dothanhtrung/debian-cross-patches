@@ -1,0 +1,12 @@
+diff -Nru lxsession-0.5.4/debian/control lxsession-0.5.4/debian/control
+--- lxsession-0.5.4/debian/control	2019-02-28 01:25:26.000000000 +0000
++++ lxsession-0.5.4/debian/control	2019-02-28 01:47:16.000000000 +0000
+@@ -8,7 +8,7 @@
+ Build-Depends:
+  debhelper (>= 11), intltool, libdbus-glib-1-dev,
+  libgtk2.0-dev, libpolkit-agent-1-dev,
+- valac, libunique-dev
++ valac:native, libunique-dev
+ Standards-Version: 4.3.0
+ Homepage: http://www.lxde.org/
+ Vcs-Browser: https://git.lxde.org/gitweb/?p=debian/lxsession.git

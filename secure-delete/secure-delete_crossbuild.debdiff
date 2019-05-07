@@ -1,0 +1,20 @@
+diff -u secure-delete-3.1/debian/rules secure-delete-3.1/debian/rules
+--- secure-delete-3.1/debian/rules
++++ secure-delete-3.1/debian/rules
+@@ -2,6 +2,7 @@
+ 
+ # Uncomment this to turn on verbose mode.
+ #export DH_VERBOSE=1
++include /usr/share/dpkg/buildtools.mk
+ 
+ CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+ CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+@@ -14,7 +15,7 @@
+ 
+ build-stamp: 
+ 	dh_testdir
+-	CFLAGS="$(CFLAGS) $(CPPFLAGS) $(LDFLAGS)" $(MAKE)
++	dh_auto_build -- CC="$(CC)" CFLAGS="$(CFLAGS) $(CPPFLAGS) $(LDFLAGS)" 
+ 	touch build-stamp
+ 
+ clean:

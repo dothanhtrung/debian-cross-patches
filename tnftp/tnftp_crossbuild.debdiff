@@ -1,0 +1,12 @@
+diff -Nru tnftp-20130505/debian/rules tnftp-20130505/debian/rules
+--- tnftp-20130505/debian/rules	2014-11-17 06:49:10.000000000 +0000
++++ tnftp-20130505/debian/rules	2014-11-17 06:51:16.000000000 +0000
+@@ -14,7 +14,7 @@
+ build-stamp:
+ 	dh_testdir
+ 	dh_autotools-dev_updateconfig
+-	./configure --prefix=/usr --mandir=\$${prefix}/share/man CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS)
++	dh_auto_configure -- --prefix=/usr --mandir=\$${prefix}/share/man CFLAGS=$(CFLAGS) LDFLAGS=$(LDFLAGS)
+ 	$(MAKE)
+ 	touch build-stamp
+ 

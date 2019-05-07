@@ -1,0 +1,12 @@
+diff -Nru pnglite-0.1.17/debian/rules pnglite-0.1.17/debian/rules
+--- pnglite-0.1.17/debian/rules	2016-04-23 16:33:16.000000000 +0000
++++ pnglite-0.1.17/debian/rules	2016-04-23 16:37:40.000000000 +0000
+@@ -9,7 +9,7 @@
+ 	dh $@
+ 
+ override_dh_auto_build:
+-	gcc -shared -fPIC -Wall $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
++	${DEB_HOST_GNU_TYPE}-gcc -shared -fPIC -Wall $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) \
+ 		-Wl,--soname,libpnglite.so.$(ABI_MAJOR) \
+ 		-o libpnglite.so.$(ABI_MAJOR) -lz pnglite.c
+ 

@@ -1,0 +1,12 @@
+diff -Nru nettoe-1.5.1/debian/rules nettoe-1.5.1/debian/rules
+--- nettoe-1.5.1/debian/rules	2016-04-05 17:13:40.000000000 +0000
++++ nettoe-1.5.1/debian/rules	2016-04-05 20:37:31.000000000 +0000
+@@ -8,7 +8,7 @@
+ 	dh $@ --with autoreconf
+ 
+ override_dh_auto_configure:
+-	./configure --prefix=/usr \
++	dh_auto_configure -- --prefix=/usr \
+ 		--bindir=/usr/games \
+ 		--mandir=/usr/share/man \
+ 		--enable-desktop

@@ -1,6 +1,6 @@
 diff -Nru xcb-2.4/debian/rules xcb-2.4/debian/rules
---- xcb-2.4/debian/rules	2012-05-11 17:23:09.000000000 +0700
-+++ xcb-2.4/debian/rules	2012-05-11 18:25:15.000000000 +0700
+--- xcb-2.4/debian/rules	2012-05-11 10:23:09.000000000 +0000
++++ xcb-2.4/debian/rules	2012-05-11 11:25:15.000000000 +0000
 @@ -10,7 +10,7 @@
  override_dh_auto_build:
  	# CCOPTIONS is used to pass CFLAGS, CPPFLAGS when compiling .c files,

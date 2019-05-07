@@ -1,0 +1,12 @@
+diff -Nru rstatd-4.0.1/debian/rules rstatd-4.0.1/debian/rules
+--- rstatd-4.0.1/debian/rules	2016-11-21 12:24:54.000000000 +0000
++++ rstatd-4.0.1/debian/rules	2016-11-21 12:25:23.000000000 +0000
+@@ -11,7 +11,7 @@
+ configure: configure-stamp
+ configure-stamp:
+ 	dh_testdir
+-	./configure --prefix=/usr
++	dh_auto_configure -- --prefix=/usr
+ 	touch configure-stamp
+ 
+ build: build-arch build-indep

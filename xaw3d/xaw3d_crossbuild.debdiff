@@ -1,0 +1,20 @@
+diff -u xaw3d-1.5+E/debian/rules xaw3d-1.5+E/debian/rules
+--- xaw3d-1.5+E/debian/rules
++++ xaw3d-1.5+E/debian/rules
+@@ -8,6 +8,7 @@
+ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+ 
+ include /usr/share/dpatch/dpatch.make
++include /usr/share/dpkg/buildtools.mk
+ 
+ ifneq (,$(findstring $(ARCH), $(COMPATARCHS)))
+ #
+@@ -26,7 +27,7 @@
+ stamp-build: patch-stamp
+ 	rm -rf $(SOURCE)/X11 && install -m755 -d $(SOURCE)/X11
+ 	cd $(SOURCE) && ln -sf ../ X11/Xaw3d && xmkmf
+-	$(MAKE) -C $(SOURCE) \
++	$(MAKE) CC="$(CC)" -C $(SOURCE) \
+           EXTRA_DEFINES="-D_REENTRANT -DARROW_SCROLLBAR" SHLIBDEF="-D_REENTRANT -DARROW_SCROLLBAR"
+ 	touch $@
+ 

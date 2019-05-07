@@ -1,0 +1,12 @@
+diff -Nru xloadimage-4.1/debian/rules xloadimage-4.1/debian/rules
+--- xloadimage-4.1/debian/rules	2016-10-03 13:17:27.000000000 +0000
++++ xloadimage-4.1/debian/rules	2018-03-26 13:58:59.000000000 +0000
+@@ -25,7 +25,7 @@
+ 	chmod 755 build-info configure
+ 	# uufilter does not respect LDFLAGS, so send all flags in CFLAGS
+ 	CFLAGS="$(CFLAGS) $(CPPFLAGS) $(LDFLAGS)" \
+-	./configure --prefix=/usr
++	dh_auto_configure -- --prefix=/usr
+ 
+ override_dh_clean:
+ 	rm -f build *.o xloadimage uufilter build.c config.log config.cache \

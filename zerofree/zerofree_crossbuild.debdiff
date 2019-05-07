@@ -1,0 +1,10 @@
+diff -Nru zerofree-1.1.1/debian/rules zerofree-1.1.1/debian/rules
+--- zerofree-1.1.1/debian/rules	2018-03-15 11:32:20.000000000 +0000
++++ zerofree-1.1.1/debian/rules	2018-03-15 11:50:56.000000000 +0000
+@@ -14,5 +14,5 @@
+ 	dh $@
+ 
+ override_dh_auto_build:
+-	dh_auto_build -- CC=$(CC) CFLAGS="$(CFLAGS) $(LDFLAGS) $(CPPFLAGS)"
++	dh_auto_build -- CFLAGS="$(CFLAGS) $(LDFLAGS) $(CPPFLAGS)"
+ 	docbook-to-man debian/zerofree.sgml > zerofree.8

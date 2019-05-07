@@ -1,0 +1,12 @@
+diff -Nru mtpaint-3.40/debian/rules mtpaint-3.40/debian/rules
+--- mtpaint-3.40/debian/rules	2016-04-07 09:22:59.000000000 +0000
++++ mtpaint-3.40/debian/rules	2016-04-07 09:18:42.000000000 +0000
+@@ -6,7 +6,7 @@
+ 	dh $@
+ 
+ override_dh_auto_configure:
+-	./configure gtk2 cflags GIF jpeg tiff intl man --prefix=/usr \
++	dh_auto_configure -- gtk2 cflags GIF jpeg tiff intl man --prefix=/usr \
+ 	--bindir=/usr/bin --mandir=/usr/share/man
+ 
+ override_dh_auto_clean:

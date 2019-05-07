@@ -1,0 +1,24 @@
+diff -Nru lightsoff-3.30.0/debian/control lightsoff-3.30.0/debian/control
+--- lightsoff-3.30.0/debian/control	2018-12-27 15:47:03.000000000 +0000
++++ lightsoff-3.30.0/debian/control	2018-12-27 15:47:03.000000000 +0000
+@@ -17,7 +17,7 @@
+                librsvg2-dev (>= 2.32.0),
+                libxml2-utils,
+                meson (>= 0.43.0),
+-               valac (>= 0.22)
++               valac:native (>= 0.22)
+ Standards-Version: 4.3.0
+ Vcs-Browser: https://salsa.debian.org/gnome-team/lightsoff
+ Vcs-Git: https://salsa.debian.org/gnome-team/lightsoff.git
+diff -Nru lightsoff-3.30.0/debian/control.in lightsoff-3.30.0/debian/control.in
+--- lightsoff-3.30.0/debian/control.in	2018-12-27 15:47:03.000000000 +0000
++++ lightsoff-3.30.0/debian/control.in	2018-12-27 15:47:03.000000000 +0000
+@@ -13,7 +13,7 @@
+                librsvg2-dev (>= 2.32.0),
+                libxml2-utils,
+                meson (>= 0.43.0),
+-               valac (>= 0.22)
++               valac:native (>= 0.22)
+ Standards-Version: 4.3.0
+ Vcs-Browser: https://salsa.debian.org/gnome-team/lightsoff
+ Vcs-Git: https://salsa.debian.org/gnome-team/lightsoff.git

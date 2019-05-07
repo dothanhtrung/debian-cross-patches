@@ -1,0 +1,39 @@
+diff -u setcd-1.5/debian/rules setcd-1.5/debian/rules
+--- setcd-1.5/debian/rules
++++ setcd-1.5/debian/rules
+@@ -10,7 +10,7 @@
+ build: build-stamp
+ build-stamp:
+ 	dh_testdir
+-	$(MAKE) CFLAGS=-O2 setcd
++	dh_auto_build -- CFLAGS=-O2 setcd
+ 	touch build-stamp
+ 
+ clean:
+diff -u setcd-1.5/debian/setcd.debhelper.log setcd-1.5/debian/setcd.debhelper.log
+--- setcd-1.5/debian/setcd.debhelper.log
++++ setcd-1.5/debian/setcd.debhelper.log
+@@ -120,0 +121,6 @@
++dh_installdirs
++dh_installchangelogs
++dh_installdocs
++dh_install
++dh_installman
++dh_link
+reverted:
+--- setcd-1.5/debian/setcd.substvars
++++ setcd-1.5.orig/debian/setcd.substvars
+@@ -1 +0,0 @@
+-shlibs:Depends=libc6 (>= 2.7-1)
+only in patch2:
+unchanged:
+--- setcd-1.5.orig/debian/.debhelper/generated/setcd/installed-by-dh_install
++++ setcd-1.5/debian/.debhelper/generated/setcd/installed-by-dh_install
+@@ -0,0 +1 @@
++./setcd
+only in patch2:
+unchanged:
+--- setcd-1.5.orig/debian/.debhelper/generated/setcd/installed-by-dh_installman
++++ setcd-1.5/debian/.debhelper/generated/setcd/installed-by-dh_installman
+@@ -0,0 +1 @@
++setcd.1

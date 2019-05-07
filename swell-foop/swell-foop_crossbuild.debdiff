@@ -1,0 +1,24 @@
+diff -Nru swell-foop-3.30.0/debian/control swell-foop-3.30.0/debian/control
+--- swell-foop-3.30.0/debian/control	2018-12-27 17:32:38.000000000 +0000
++++ swell-foop-3.30.0/debian/control	2018-12-27 17:32:38.000000000 +0000
+@@ -16,7 +16,7 @@
+                libglib2.0-dev (>= 2.36.0),
+                libgtk-3-dev (>= 3.12),
+                meson (>= 0.42),
+-               valac (>= 0.22)
++               valac:native (>= 0.22)
+ Standards-Version: 4.3.0
+ X-Ubuntu-Use-Langpack: yes
+ Vcs-Browser: https://salsa.debian.org/gnome-team/swell-foop
+diff -Nru swell-foop-3.30.0/debian/control.in swell-foop-3.30.0/debian/control.in
+--- swell-foop-3.30.0/debian/control.in	2018-12-27 17:32:38.000000000 +0000
++++ swell-foop-3.30.0/debian/control.in	2018-12-27 17:32:38.000000000 +0000
+@@ -12,7 +12,7 @@
+                libglib2.0-dev (>= 2.36.0),
+                libgtk-3-dev (>= 3.12),
+                meson (>= 0.42),
+-               valac (>= 0.22)
++               valac:native (>= 0.22)
+ Standards-Version: 4.3.0
+ X-Ubuntu-Use-Langpack: yes
+ Vcs-Browser: https://salsa.debian.org/gnome-team/swell-foop

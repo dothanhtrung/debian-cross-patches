@@ -1,0 +1,12 @@
+diff -Nru ploop-1.15/debian/control ploop-1.15/debian/control
+--- ploop-1.15/debian/control	2018-07-28 22:01:58.000000000 +0000
++++ ploop-1.15/debian/control	2018-07-28 22:01:58.000000000 +0000
+@@ -2,7 +2,7 @@
+ Section: libs
+ Priority: optional
+ Maintainer: Debian QA Group <packages@qa.debian.org>
+-Build-Depends: debhelper (>= 11), e2fslibs-dev, libxml2-dev, pkg-config
++Build-Depends: debhelper (>= 11), e2fslibs-dev, libxml2-dev:native, pkg-config
+ Standards-Version: 4.1.5
+ Homepage: https://wiki.openvz.org/Ploop
+ 

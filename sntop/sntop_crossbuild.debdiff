@@ -1,0 +1,20 @@
+diff -u sntop-1.4.3/debian/rules sntop-1.4.3/debian/rules
+--- sntop-1.4.3/debian/rules
++++ sntop-1.4.3/debian/rules
+@@ -6,6 +6,7 @@
+ #export DH_VERBOSE=1
+ 
+ include /usr/share/quilt/quilt.make
++include /usr/share/dpkg/buildtools.mk
+ 
+ configure: configure-stamp
+ configure-stamp: patch
+@@ -19,7 +20,7 @@
+ build-stamp:
+ 	dh_testdir
+ 	# Add here commands to compile the package.
+-	$(MAKE)
++	$(MAKE) CC="$(CC)"
+ 	touch build-stamp
+ clean: unpatch
+ 	dh_testdir

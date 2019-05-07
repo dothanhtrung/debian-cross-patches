@@ -1,0 +1,12 @@
+diff -Nru penguin-command-1.6.11/debian/rules penguin-command-1.6.11/debian/rules
+--- penguin-command-1.6.11/debian/rules	2014-08-22 17:16:01.000000000 +0000
++++ penguin-command-1.6.11/debian/rules	2014-08-22 16:46:29.000000000 +0000
+@@ -4,7 +4,7 @@
+ 	dh $@ --with autoreconf
+ 
+ override_dh_auto_configure:
+-	./configure  --prefix=/usr --bindir=/usr/games --datadir=/usr/share/games
++	dh_auto_configure -- --prefix=/usr --bindir=/usr/games --datadir=/usr/share/games
+ 
+ override_dh_installman:
+ 	dh_installman --language=ja penguin-command.ja.6

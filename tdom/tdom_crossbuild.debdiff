@@ -1,0 +1,19 @@
+diff -Nru tdom-0.9.1/debian/control tdom-0.9.1/debian/control
+--- tdom-0.9.1/debian/control	2018-07-22 19:04:46.000000000 +0000
++++ tdom-0.9.1/debian/control	2018-07-22 19:04:46.000000000 +0000
+@@ -3,7 +3,7 @@
+ Priority: optional
+ Maintainer: Tcl/Tk Debian Packagers <pkg-tcltk-devel@lists.alioth.debian.org>
+ Uploaders: Hector Romojaro <hector.romojaro@gmail.com>, Stefan Sobernig <stefan.sobernig@wu-wien.ac.at>
+-Build-Depends: debhelper (>= 11), tcl-dev (>= 8.5), libexpat1-dev, libgumbo-dev, pkg-config
++Build-Depends: debhelper (>= 11), tcl-dev (>= 8.5), libexpat1-dev, libgumbo-dev:native, pkg-config
+ Standards-Version: 4.1.5
+ Homepage: http://tdom.org/
+ Vcs-Browser: https://salsa.debian.org/tcltk-team/tdom
+@@ -42,4 +42,4 @@
+  implementation in C completes the basic feature set. tDOM interfaces with the
+  gumbo HTML5 parser and provides a robust JSON parser/ serializer for
+  JSON-to-JSON roundtripping. Documentation is provided in TMML, HTML and
+- nroff formats.
+\ No newline at end of file
++ nroff formats.

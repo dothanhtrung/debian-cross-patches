@@ -1,0 +1,10 @@
+diff -Nru untex-1.2/debian/rules untex-1.2/debian/rules
+--- untex-1.2/debian/rules	2016-10-20 14:01:26.000000000 +0000
++++ untex-1.2/debian/rules	2016-10-20 14:01:26.000000000 +0000
+@@ -1,5 +1,5 @@
+ #!/usr/bin/make -f
+-
++include /usr/share/dpkg/buildtools.mk
+ PACKAGE = untex
+ 
+ export DEB_BUILD_MAINT_OPTIONS	= hardening=+all

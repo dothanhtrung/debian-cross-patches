@@ -1,0 +1,12 @@
+diff -Nru lpr-2008.05.17.3/debian/rules lpr-2008.05.17.3/debian/rules
+--- lpr-2008.05.17.3/debian/rules	2019-01-11 20:06:54.000000000 +0000
++++ lpr-2008.05.17.3/debian/rules	2019-01-11 20:06:54.000000000 +0000
+@@ -12,7 +12,7 @@
+ build: build-stamp
+ build-stamp:
+ 	dh_testdir
+-	make -W CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
++	dh_auto_build -- -W CC="$(CC)" CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"
+ 	touch build-stamp
+ 
+ clean: 

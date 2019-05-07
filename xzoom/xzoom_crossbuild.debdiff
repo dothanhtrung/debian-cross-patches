@@ -1,0 +1,12 @@
+diff -u xzoom-0.3/debian/rules xzoom-0.3/debian/rules
+--- xzoom-0.3/debian/rules
++++ xzoom-0.3/debian/rules
+@@ -4,7 +4,7 @@
+ build-stamp:
+ 	dh_testdir
+ 	xmkmf -a
+-	$(MAKE)
++	dh_auto_build
+ 	touch build-stamp
+ 
+ clean:

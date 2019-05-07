@@ -1,0 +1,12 @@
+diff -Nru xcolorsel-1.1a/debian/rules xcolorsel-1.1a/debian/rules
+--- xcolorsel-1.1a/debian/rules	2019-01-31 16:59:26.000000000 +0000
++++ xcolorsel-1.1a/debian/rules	2019-01-31 16:59:26.000000000 +0000
+@@ -12,7 +12,7 @@
+ 	xmkmf -a -DHasSELinux=0
+ 
+ override_dh_auto_build:
+-	$(MAKE) XAWLIB=-lXaw3d CDEBUGFLAGS='$(CFLAGS) $(CPPFLAGS) -Wall' LOCAL_LDFLAGS='$(LDFLAGS)'
++	dh_auto_build -- XAWLIB=-lXaw3d CDEBUGFLAGS='$(CFLAGS) $(CPPFLAGS) -Wall' LOCAL_LDFLAGS='$(LDFLAGS)'
+ 
+ override_dh_auto_clean:
+ 	[ ! -f Makefile ] || $(MAKE) cleandir

@@ -1,0 +1,12 @@
+diff -u parchive-1.1/debian/rules parchive-1.1/debian/rules
+--- parchive-1.1/debian/rules
++++ parchive-1.1/debian/rules
+@@ -22,7 +22,7 @@
+ 	dh_testdir
+ 
+ 	# Add here commands to compile the package.
+-	$(MAKE)
++	dh_auto_build
+ 	#/usr/bin/docbook-to-man debian/parchive.sgml > parchive.1
+ 
+ 	touch build-stamp

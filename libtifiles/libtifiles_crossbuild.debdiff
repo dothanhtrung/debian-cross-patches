@@ -1,0 +1,12 @@
+diff -Nru libtifiles-1.1.7/debian/control libtifiles-1.1.7/debian/control
+--- libtifiles-1.1.7/debian/control	2018-05-22 16:35:47.000000000 +0000
++++ libtifiles-1.1.7/debian/control	2018-05-22 16:35:47.000000000 +0000
+@@ -8,7 +8,7 @@
+                libglib2.0-dev,
+                libticonv-dev (>= 1.1.5),
+                pkg-config,
+-               tfdocgen,
++               tfdocgen:native,
+                zlib1g-dev
+ Standards-Version: 4.1.4
+ Section: libs

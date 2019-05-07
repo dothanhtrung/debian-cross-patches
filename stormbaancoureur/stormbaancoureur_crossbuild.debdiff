@@ -1,0 +1,12 @@
+diff -Nru stormbaancoureur-2.1.6/debian/rules stormbaancoureur-2.1.6/debian/rules
+--- stormbaancoureur-2.1.6/debian/rules	2016-08-03 17:38:05.000000000 +0000
++++ stormbaancoureur-2.1.6/debian/rules	2016-08-03 17:38:05.000000000 +0000
+@@ -12,7 +12,7 @@
+ 
+ 
+ override_dh_auto_build:
+-	$(MAKE) -C src-stormbaancoureur CFLAGS="$(CPPFLAGS) $(CFLAGS)"
++	dh_auto_build -D src-stormbaancoureur -- CFLAGS="$(CPPFLAGS) $(CFLAGS)"
+ 
+ override_dh_auto_clean:
+ 	[ ! -f src-stormbaancoureur/Makefile ] || $(MAKE) -C src-stormbaancoureur clean

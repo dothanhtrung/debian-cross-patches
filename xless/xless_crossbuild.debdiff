@@ -1,0 +1,19 @@
+diff -u xless-1.7/debian/rules xless-1.7/debian/rules
+--- xless-1.7/debian/rules
++++ xless-1.7/debian/rules
+@@ -5,13 +5,14 @@
+ 
+ # Uncomment this to turn on verbose mode.
+ #export DH_VERBOSE=1
++include /usr/share/dpkg/buildtools.mk
+ 
+ build: build-stamp
+ build-stamp:
+ 	dh_testdir
+ 
+ 	# Add here commands to compile the package.
+-	$(MAKE) -f Makefile.debian
++	$(MAKE) CC="$(CC)" -f Makefile.debian
+ 
+ 	touch build-stamp
+ 

@@ -1,0 +1,12 @@
+diff -u mgdiff-1.0/debian/rules mgdiff-1.0/debian/rules
+--- mgdiff-1.0/debian/rules
++++ mgdiff-1.0/debian/rules
+@@ -9,7 +9,7 @@
+ 	dh_testdir
+ 	xmkmf
+ 	make depend XMULIBONLY=""
+-	make XMULIBONLY=""
++	dh_auto_build -- XMULIBONLY=""
+ 	touch build
+ 
+ clean:

@@ -1,12 +1,20 @@
 diff -Nru wmnet-1.06/debian/rules wmnet-1.06/debian/rules
---- wmnet-1.06/debian/rules	2012-03-04 03:13:23.000000000 +0700
-+++ wmnet-1.06/debian/rules	2012-03-04 03:20:19.000000000 +0700
-@@ -10,7 +10,7 @@
+--- wmnet-1.06/debian/rules	2012-03-03 20:13:23.000000000 +0000
++++ wmnet-1.06/debian/rules	2012-03-03 20:20:19.000000000 +0000
+@@ -2,6 +2,7 @@
+ # Made with the aid of debmake, by Christoph Lameter,
+ # based on the sample debian/rules file for GNU hello by Ian Jackson.
+ # Handmodified by P. Frauenfelder for debhelper support, 5 Sept 1998
++include /usr/share/dpkg/buildtools.mk
+ 
+ build: build-arch build-indep
+ build-arch: build-stamp
+@@ -10,7 +11,7 @@
  	dh_testdir
  
  	xmkmf
 -	make
-+	dh_auto_build
++	make CC="$(CC)"
  
  	touch build-stamp
  

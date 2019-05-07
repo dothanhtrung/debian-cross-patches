@@ -1,0 +1,12 @@
+diff -Nru rrootage-0.23a/debian/rules rrootage-0.23a/debian/rules
+--- rrootage-0.23a/debian/rules	2015-12-16 09:58:30.000000000 +0000
++++ rrootage-0.23a/debian/rules	2015-12-16 09:58:26.000000000 +0000
+@@ -9,7 +9,7 @@
+ 	dh $@
+ 
+ override_dh_auto_build:
+-	$(MAKE) -C src -f makefile.lin MORE_CFLAGS="$(CFLAGS)"
++	dh_auto_build -D src -- -f makefile.lin MORE_CFLAGS="$(CFLAGS)"
+ 
+ override_dh_auto_clean:
+ 	$(MAKE) -C src -f makefile.lin clean

@@ -1,0 +1,12 @@
+diff -Nru libticalcs-1.1.9+dfsg/debian/control libticalcs-1.1.9+dfsg/debian/control
+--- libticalcs-1.1.9+dfsg/debian/control	2018-05-22 16:41:37.000000000 +0000
++++ libticalcs-1.1.9+dfsg/debian/control	2018-05-22 16:41:37.000000000 +0000
+@@ -10,7 +10,7 @@
+                libticonv-dev (>= 1.1.5),
+                libtifiles-dev (>= 1.1.7),
+                pkg-config,
+-               tfdocgen
++               tfdocgen:native
+ Standards-Version: 4.1.4
+ Section: libs
+ Homepage: http://lpg.ticalc.org/prj_tilp/

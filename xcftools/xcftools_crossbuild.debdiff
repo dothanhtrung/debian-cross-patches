@@ -1,0 +1,17 @@
+diff -Nru xcftools-1.0.7/debian/rules xcftools-1.0.7/debian/rules
+--- xcftools-1.0.7/debian/rules	2016-05-18 10:32:54.000000000 +0000
++++ xcftools-1.0.7/debian/rules	2016-05-18 10:13:55.000000000 +0000
+@@ -3,8 +3,13 @@
+ # Uncomment this to turn on verbose mode.
+ #export DH_VERBOSE=1
+ 
++include /usr/share/dpkg/buildtools.mk
++
+ export DEB_BUILD_MAINT_OPTIONS  = hardening=+bindnow,+pie
+ export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+ 
+ %:
+ 	dh $@ --with autoreconf --parallel
++
++override_dh_auto_build:
++	dh_auto_build -- CC="$(CC)"

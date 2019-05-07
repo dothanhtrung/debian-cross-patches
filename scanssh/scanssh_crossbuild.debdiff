@@ -1,0 +1,12 @@
+diff -u scanssh-2.0/debian/rules scanssh-2.0/debian/rules
+--- scanssh-2.0/debian/rules
++++ scanssh-2.0/debian/rules
+@@ -19,7 +19,7 @@
+ configure-stamp:
+ 	dh_testdir
+ 	# Add here commands to configure the package.
+-	./configure --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info
++	dh_auto_configure -- --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info
+ 
+ 	touch configure-stamp
+ 

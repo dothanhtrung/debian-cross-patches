@@ -1,0 +1,12 @@
+diff -Nru pcal-4.11.0/debian/rules pcal-4.11.0/debian/rules
+--- pcal-4.11.0/debian/rules	2012-04-11 19:39:35.000000000 +0000
++++ pcal-4.11.0/debian/rules	2012-05-09 20:32:10.000000000 +0000
+@@ -15,7 +15,7 @@
+ build-stamp:
+ 	dh_testdir
+ 
+-	$(MAKE) CFLAGS="-O2 -Wall -DEPS"
++	dh_auto_build -- CFLAGS="-O2 -Wall -DEPS"
+ 
+ 	touch build-stamp
+ 

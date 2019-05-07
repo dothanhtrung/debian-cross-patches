@@ -1,0 +1,9 @@
+diff -Nru libmatchbox-1.9-osso8/debian/rules libmatchbox-1.9-osso8/debian/rules
+--- libmatchbox-1.9-osso8/debian/rules	2018-10-24 17:28:52.000000000 +0000
++++ libmatchbox-1.9-osso8/debian/rules	2018-10-24 17:28:52.000000000 +0000
+@@ -23,4 +23,4 @@
+ 	dh_clean
+ 
+ override_dh_auto_configure:
+-	./configure --prefix=/usr --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) --enable-pango --enable-jpeg --enable-png --enable-doxygen-docs
++	dh_auto_configure -- --prefix=/usr --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH) --enable-pango --enable-jpeg --enable-png --enable-doxygen-docs

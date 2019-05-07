@@ -1,12 +1,12 @@
 diff -u ap-utils-1.5/debian/rules ap-utils-1.5/debian/rules
 --- ap-utils-1.5/debian/rules
 +++ ap-utils-1.5/debian/rules
-@@ -55,7 +55,7 @@
- #	dh_undocumented
- 	dh_installman
- 	dh_link usr/share/man/man8/ap-mrtg.8 usr/share/man/man8/ap-rrd.8
--	dh_strip
-+	dh_strip_nondeterminism
- 	dh_compress
- 	dh_fixperms
- #	dh_makeshlibs
+@@ -13,7 +13,7 @@
+ 	dh_testdir
+ 	cp -f /usr/share/misc/config.sub config/config.sub
+ 	cp -f /usr/share/misc/config.guess config/config.guess
+-	./configure $(confflags) --prefix=/usr \
++	dh_auto_configure -- --prefix=/usr \
+ 		    --mandir=\$${prefix}/share/man \
+ 		    --infodir=\$${prefix}/share/info
+ 	$(MAKE)

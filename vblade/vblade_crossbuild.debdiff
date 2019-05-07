@@ -1,30 +1,6 @@
-diff -Nru vblade-24/debian/patches/Fix-parallel-make.patch vblade-24/debian/patches/Fix-parallel-make.patch
---- vblade-24/debian/patches/Fix-parallel-make.patch	1970-01-01 08:00:00.000000000 +0800
-+++ vblade-24/debian/patches/Fix-parallel-make.patch	2019-02-26 02:47:57.000000000 +0700
-@@ -0,0 +1,11 @@
-+--- orig/vblade-24/makefile	2019-03-08 10:42:30.000000000 +0700
-++++ vblade-24/makefile	2019-03-08 10:41:14.729256275 +0700
-+@@ -22,7 +22,7 @@
-+ ata.o : ata.c config.h dat.h fns.h makefile
-+ 	${CC} $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -c $<
-+ 
-+-bpf.o : bpf.c
-++bpf.o : bpf.c config.h
-+ 	${CC} $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -c $<
-+ 
-+ config.h : config/config.h.in makefile
-diff -Nru vblade-24/debian/patches/series vblade-24/debian/patches/series
---- vblade-24/debian/patches/series	2019-02-26 02:43:46.000000000 +0700
-+++ vblade-24/debian/patches/series	2019-02-26 02:47:57.000000000 +0700
-@@ -9,3 +9,5 @@
- local.makefile-additional-commands.patch
- local.vbladed-check-params.patch
- local.hardening-build.patch
-+
-+Fix-parallel-make.patch
 diff -Nru vblade-24/debian/rules vblade-24/debian/rules
---- vblade-24/debian/rules	2018-09-15 18:22:56.000000000 +0700
-+++ vblade-24/debian/rules	2019-02-26 02:47:57.000000000 +0700
+--- vblade-24/debian/rules	2018-09-15 11:22:56.000000000 +0000
++++ vblade-24/debian/rules	2019-02-25 19:47:57.000000000 +0000
 @@ -19,7 +19,7 @@
  	dh_clean
  

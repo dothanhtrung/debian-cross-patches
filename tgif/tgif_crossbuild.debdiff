@@ -1,0 +1,22 @@
+diff -Nru tgif-4.2.5/debian/rules tgif-4.2.5/debian/rules
+--- tgif-4.2.5/debian/rules	2011-06-25 06:11:49.000000000 +0000
++++ tgif-4.2.5/debian/rules	2015-12-14 23:01:37.000000000 +0000
+@@ -6,6 +6,7 @@
+ #     set +x; else (set -x; $(MKDIRHIER) $(DESTDIR)$$i); fi; \@@\
+ 
+ #export DH_VERBOSE=1; debhelper 0.19
++include /usr/share/dpkg/buildtools.mk
+ 
+ DEB=`pwd`/debian/tgif
+ 
+@@ -16,8 +17,8 @@
+ build-stamp:
+ 	dh_testdir
+ 	xmkmf
+-	$(MAKE) LOCAL_LDFLAGS=-s
+-	cd po && xmkmf -a && $(MAKE)
++	$(MAKE) CC="$(CC)" LOCAL_LDFLAGS=-s
++	cd po && xmkmf -a && $(MAKE) CC="$(CC)"
+ 	touch build-stamp
+ 
+ clean:
