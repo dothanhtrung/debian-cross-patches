@@ -1,20 +1,12 @@
 diff -u xsysinfo-1.7/debian/rules xsysinfo-1.7/debian/rules
 --- xsysinfo-1.7/debian/rules
 +++ xsysinfo-1.7/debian/rules
-@@ -2,6 +2,7 @@
- # debian/rules for xsysinfo
- 
- include /usr/share/dpatch/dpatch.make
-+include /usr/share/dpkg/buildtools.mk
- 
- CDEBUGFLAGS = -Wall -g
- ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-@@ -15,7 +16,7 @@
+@@ -15,7 +15,7 @@
  	dh_testdir
  
  	xmkmf
 -	$(MAKE) CDEBUGFLAGS="$(CDEBUGFLAGS)" xsysinfo
-+	$(MAKE) CC="$(CC)" CDEBUGFLAGS="$(CDEBUGFLAGS)" xsysinfo
++	dh_auto_build -- CDEBUGFLAGS="$(CDEBUGFLAGS)" xsysinfo
  
  	touch build-stamp
  

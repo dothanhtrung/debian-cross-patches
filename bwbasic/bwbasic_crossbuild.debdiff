@@ -1,0 +1,11 @@
+diff -u bwbasic-2.20pl2/debian/rules bwbasic-2.20pl2/debian/rules
+--- bwbasic-2.20pl2/debian/rules
++++ bwbasic-2.20pl2/debian/rules
+@@ -3,3 +3,7 @@
++include /usr/share/dpkg/buildtools.mk
++
+ %:
+ 	dh $@ 
+ 
++override_dh_auto_build:
++	dh_auto_build -- CC="$(CC)"

@@ -1,0 +1,12 @@
+diff -Nru perl-5.28.1/debian/rules perl-5.28.1/debian/rules
+--- perl-5.28.1/debian/rules	2019-03-31 11:42:41.000000000 +0000
++++ perl-5.28.1/debian/rules	2019-03-31 11:51:22.000000000 +0000
+@@ -136,7 +136,7 @@
+ 	ln -s regen-configure/U
+ 	ln -s regen-configure/.package
+ 	metaconfig -X .metaconf-exclusions.txt -m -L regen-configure/dist
+-	./Porting/config_h.pl # reorders config_h.SH
++	./Porting/config_h.pl LINK32="$(CC)" cc="$(CC)" # reorders config_h.SH
+ 	chmod +x config_h.SH Configure # placate t/porting/exec-bit.t
+ 	touch $@
+ 

@@ -12,7 +12,7 @@ diff -Nru xskat-4.0/debian/rules xskat-4.0/debian/rules
  
  override_dh_auto_build:
 -	$(MAKE) CCOPTIONS="$(CFLAGS) $(CPPFLAGS)" EXTRA_LDOPTIONS="$(LDFLAGS)"
-+	$(MAKE) CC="$(CC)" CCOPTIONS="$(CFLAGS) $(CPPFLAGS)" EXTRA_LDOPTIONS="$(LDFLAGS)"
++	dh_auto_build -- CC="$(CC)" CCOPTIONS="$(CFLAGS) $(CPPFLAGS)" EXTRA_LDOPTIONS="$(LDFLAGS)"
  
  override_dh_auto_install:
  	dh_installman xskat.man

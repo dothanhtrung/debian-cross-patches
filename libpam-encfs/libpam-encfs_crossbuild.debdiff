@@ -1,0 +1,20 @@
+diff -Nru libpam-encfs-0.1.4.4/debian/rules libpam-encfs-0.1.4.4/debian/rules
+--- libpam-encfs-0.1.4.4/debian/rules	2018-04-05 14:49:37.000000000 +0000
++++ libpam-encfs-0.1.4.4/debian/rules	2018-11-15 15:16:34.000000000 +0000
+@@ -9,6 +9,7 @@
+ # Uncomment this to turn on verbose mode.
+ #export DH_VERBOSE=1
+ 
++include /usr/share/dpkg/buildtools.mk
+ 
+ PACKAGE = libpam-encfs
+ PAM_CONFIG_DIR = $(CURDIR)/debian/libpam-encfs/usr/share/pam-configs
+@@ -54,7 +55,7 @@
+ 	dh_testdir
+ 
+ 	# Add here commands to compile the package.
+-	$(MAKE) CFLAGS="$(CFLAGS) $(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" PAMLIB="$(PAMLIB)"
++	dh_auto_build -- CC="$(CC)" LD="$(LD)" CFLAGS="$(CFLAGS) $(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" PAMLIB="$(PAMLIB)"
+ 	#docbook-to-man debian/pam-encfs.sgml > pam-encfs.1
+ 
+ 	touch build-stamp

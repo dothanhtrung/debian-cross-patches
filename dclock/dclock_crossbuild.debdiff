@@ -6,7 +6,7 @@ diff -Nru dclock-2.2.2/debian/rules dclock-2.2.2/debian/rules
  override_dh_auto_build:
  	xmkmf
 -	$(MAKE) CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" \
-+	dh_auto_build CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" \
++	dh_auto_build -- CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" \
  		CXXFLAGS="$(CXXFLAGS)" LDFLAGS="$(LDFLAGS)"
  
  override_dh_install:

@@ -1,0 +1,12 @@
+diff -u ftnchek-3.3.1/debian/rules ftnchek-3.3.1/debian/rules
+--- ftnchek-3.3.1/debian/rules
++++ ftnchek-3.3.1/debian/rules
+@@ -12,7 +12,7 @@
+ 	cp config.guess debian
+ 	cp /usr/share/misc/config.sub .
+ 	cp /usr/share/misc/config.guess .
+-	EMACS=/bin/true AWK=/usr/bin/awk ./configure --prefix=/usr --mandir=`pwd`/debian/ftnchek/usr/share/man --disable-submode
++	dh_auto_configure -- EMACS=/bin/true AWK=/usr/bin/awk --prefix=/usr --mandir=`pwd`/debian/ftnchek/usr/share/man --disable-submode
+ 	make OPT="$(CFLAGS) $(CPPFLAGS)" LDFLAGS="$(LDFLAGS)"
+ 	make check
+ 

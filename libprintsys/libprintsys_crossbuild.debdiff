@@ -1,0 +1,34 @@
+diff -u libprintsys-0.6/debian/rules libprintsys-0.6/debian/rules
+--- libprintsys-0.6/debian/rules
++++ libprintsys-0.6/debian/rules
+@@ -7,12 +7,6 @@
+ 
+ export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+ export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+-# FOR AUTOCONF 2.52 AND NEWER ONLY
+-ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+-  confflags += --build $(DEB_HOST_GNU_TYPE)
+-else
+-  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+-endif
+ 
+ p_bin=libprintsys
+ p_dev=$(p_bin)-dev
+@@ -41,7 +35,7 @@
+ 	touch configure.in &&   touch aclocal.m4 &&     touch configure
+ 	touch config.h.in Makefile.in */Makefile.in
+ 	#
+-	./configure $(confflags) --prefix=/usr
++	dh_auto_configure
+ 
+ 	touch configure-stamp
+ 
+@@ -50,7 +44,7 @@
+ 	aclocal
+ 	automake --add-missing
+ 	# Add here commands to configure the package.
+-	./configure --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info
++	dh_auto_configure 
+ 
+ 
+ build: configure-stamp build-stamp

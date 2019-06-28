@@ -1,0 +1,12 @@
+diff -u cpipe-3.0.1/debian/rules cpipe-3.0.1/debian/rules
+--- cpipe-3.0.1/debian/rules
++++ cpipe-3.0.1/debian/rules
+@@ -24,7 +24,7 @@
+ build-stamp: configure-stamp 
+ 	dh_testdir
+ 
+-	$(MAKE)
++	dh_auto_build
+ 
+ 	touch build-stamp
+ 

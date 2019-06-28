@@ -1,0 +1,17 @@
+diff -Nru libcrypt-openssl-random-perl-0.15/debian/rules libcrypt-openssl-random-perl-0.15/debian/rules
+--- libcrypt-openssl-random-perl-0.15/debian/rules	2018-07-31 16:40:23.000000000 +0000
++++ libcrypt-openssl-random-perl-0.15/debian/rules	2018-07-31 16:40:23.000000000 +0000
+@@ -1,6 +1,13 @@
+ #!/usr/bin/make -f
+ 
+ export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
++include /usr/share/dpkg/buildtools.mk
+ 
+ %:
+ 	dh $@
++
++override_dh_auto_configure:
++	dh_auto_configure -- LD="$(CC)"
++
++override_dh_auto_build:
++	dh_auto_build -- CC="$(CC)"

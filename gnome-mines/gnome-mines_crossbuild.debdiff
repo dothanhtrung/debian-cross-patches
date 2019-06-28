@@ -1,0 +1,12 @@
+diff -Nru gnome-mines-3.30.1.1/debian/control.in gnome-mines-3.30.1.1/debian/control.in
+--- gnome-mines-3.30.1.1/debian/control.in	2018-12-25 12:51:24.000000000 +0000
++++ gnome-mines-3.30.1.1/debian/control.in	2018-12-25 12:51:24.000000000 +0000
+@@ -13,7 +13,7 @@
+                librsvg2-dev (>= 2.32.0),
+                libxml2-utils,
+                meson (>= 0.37.1),
+-               valac (>= 0.24)
++               valac:native (>= 0.24)
+ Standards-Version: 4.3.0
+ Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-mines
+ Vcs-Git: https://salsa.debian.org/gnome-team/gnome-mines.git

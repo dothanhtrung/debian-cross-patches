@@ -1,0 +1,21 @@
+diff -u discover-2.1.2/debian/rules discover-2.1.2/debian/rules
+--- discover-2.1.2/debian/rules
++++ discover-2.1.2/debian/rules
+@@ -58,7 +58,7 @@
+ endif
+ 
+ CFLAGS_DEB=CFLAGS="-g $(OPTIMIZE)"
+-RUN_CONFIGURE=  ../configure $(CONFIGURE_PCMCIA) \
++CONFIGURE_FLAGS=  $(CONFIGURE_PCMCIA) \
+ 		--prefix=/usr \
+ 		--sbindir=/sbin \
+ 		--sysconfdir=/etc \
+@@ -80,7 +80,7 @@
+ 	dh_autotools-dev_updateconfig
+ 
+ 	mkdir builddeb
+-	cd builddeb && $(CFLAGS_DEB) $(RUN_CONFIGURE)
++	dh_auto_configure -B builddeb -- $(CFLAGS_DEB) $(CONFIGURE_FLAGS)
+ 
+ 	touch $@
+ 

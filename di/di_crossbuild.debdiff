@@ -6,7 +6,7 @@ diff -Nru di-4.47/debian/rules di-4.47/debian/rules
  
  override_dh_auto_build:
 -	$(MAKE) all-c
-+	dh_auto_build all-c
++	dh_auto_build -- all-c
  
  override_dh_auto_install:
  	$(MAKE) install prefix=$(CURDIR)/debian/di/usr/

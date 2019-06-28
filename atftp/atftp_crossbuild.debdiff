@@ -1,0 +1,12 @@
+diff -u atftp-0.7.git20120829/debian/rules atftp-0.7.git20120829/debian/rules
+--- atftp-0.7.git20120829/debian/rules
++++ atftp-0.7.git20120829/debian/rules
+@@ -19,7 +19,7 @@
+ configure-stamp:
+ 	dh_testdir
+ 	# Add here commands to configure the package.
+-	./autogen.sh
++	dh_autoreconf	
+ 	#./configure --prefix=/usr --mandir=/usr/share/man
+ 	dh_auto_configure -- $(shell $(dpkg_buildflags) --export=configure)
+ 

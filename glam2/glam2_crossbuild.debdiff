@@ -1,0 +1,87 @@
+diff -Nru glam2-1064/debian/patches/change-fixed-compilers.patch glam2-1064/debian/patches/change-fixed-compilers.patch
+--- glam2-1064/debian/patches/change-fixed-compilers.patch	1970-01-01 00:00:00.000000000 +0000
++++ glam2-1064/debian/patches/change-fixed-compilers.patch	2019-03-18 07:16:36.000000000 +0000
+@@ -0,0 +1,63 @@
++diff -Nru orig/glam2-1064/purge/Makefile glam2-1064/purge/Makefile
++--- orig/glam2-1064/purge/Makefile	2019-05-24 10:16:05.000000000 +0000
+++++ glam2-1064/purge/Makefile	2019-05-24 10:15:39.931223187 +0000
++@@ -3,4 +3,4 @@
++ 
++ # Command for compiling purge:
++ purge: *.c *.h Makefile
++-	cc $(CFLAGS) -o purge *.c -lm $(LDFLAGS)
+++	$(CC) $(CFLAGS) -o purge *.c -lm $(LDFLAGS)
++diff -Nru orig/glam2-1064/src/Makefile glam2-1064/src/Makefile
++--- orig/glam2-1064/src/Makefile	2019-05-24 10:16:05.000000000 +0000
+++++ glam2-1064/src/Makefile	2019-05-24 10:15:29.875223187 +0000
++@@ -31,39 +31,39 @@
++ 
++ # Command for compiling glam2:
++ glam2: $(GSRC) *.h Makefile
++-	cc $(CFLAGS) -o glam2 $(GSRC) -lm $(LDFLAGS)
+++	$(CC) $(CFLAGS) -o glam2 $(GSRC) -lm $(LDFLAGS)
++ 
++ # Command for compiling glam2scan:
++ glam2scan: $(SSRC) *.h Makefile
++-	cc $(CFLAGS) -o glam2scan $(SSRC) -lm $(LDFLAGS)
+++	$(CC) $(CFLAGS) -o glam2scan $(SSRC) -lm $(LDFLAGS)
++ 
++ # Command for compiling glam2format:
++ glam2format: $(FSRC) *.h Makefile
++-	cc $(CFLAGS) -o glam2format $(FSRC) -lm $(LDFLAGS)
+++	$(CC) $(CFLAGS) -o glam2format $(FSRC) -lm $(LDFLAGS)
++ 
++ # Command for compiling glam2mask:
++ glam2mask: $(MSRC) *.h Makefile
++-	cc $(CFLAGS) -o glam2mask $(MSRC) -lm $(LDFLAGS)
+++	$(CC) $(CFLAGS) -o glam2mask $(MSRC) -lm $(LDFLAGS)
++ 
++ # Here follow commands for compiling special versions of the programs
++ 
++ # Compile glam2 including FFT algorithm (requires FFTW to be installed):
++ glam2fft: $(GSRC) convolve.c *.h Makefile
++-	cc $(CFLAGS) -DFFT -o glam2fft $(GSRC) convolve.c -lm -lfftw3 $(LDFLAGS)
+++	$(CC) $(CFLAGS) -DFFT -o glam2fft $(GSRC) convolve.c -lm -lfftw3 $(LDFLAGS)
++ 
++ # Compile for debugging with gdb or valgrind, with extra compiler warnings:
++ glam2_d: $(GSRC) *.h Makefile
++-	cc -Wall -W -pedantic -g -o glam2_d $(GSRC) -lm
+++	$(CC) -Wall -W -pedantic -g -o glam2_d $(GSRC) -lm
++ glam2scan_d: $(SSRC) *.h Makefile
++-	cc -Wall -W -pedantic -g -o glam2scan_d $(SSRC) -lm
+++	$(CC) -Wall -W -pedantic -g -o glam2scan_d $(SSRC) -lm
++ glam2format_d: $(FSRC) *.h Makefile
++-	cc -Wall -W -pedantic -g -o glam2format_d $(FSRC) -lm
+++	$(CC) -Wall -W -pedantic -g -o glam2format_d $(FSRC) -lm
++ glam2mask_d: $(MSRC) *.h Makefile
++-	cc -Wall -W -pedantic -g -o glam2mask_d $(MSRC) -lm
+++	$(CC) -Wall -W -pedantic -g -o glam2mask_d $(MSRC) -lm
++ 
++ # Compile for profiling with gprof, with extra compiler warnings:
++ # Use -O2 to avoid function inlining
++ glam2_p: $(GSRC) *.h Makefile
++-	cc -Wall -W -pedantic -O2 -pg -o glam2_p $(GSRC) -lm
+++	$(CC) -Wall -W -pedantic -O2 -pg -o glam2_p $(GSRC) -lm
++ glam2scan_p: $(SSRC) *.h Makefile
++-	cc -Wall -W -pedantic -O2 -pg -o glam2scan_p $(SSRC) -lm
+++	$(CC) -Wall -W -pedantic -O2 -pg -o glam2scan_p $(SSRC) -lm
+diff -Nru glam2-1064/debian/patches/series glam2-1064/debian/patches/series
+--- glam2-1064/debian/patches/series	2019-03-18 07:16:36.000000000 +0000
++++ glam2-1064/debian/patches/series	2019-03-18 07:16:36.000000000 +0000
+@@ -1 +1,2 @@
+ hardening.patch
++change-fixed-compilers.patch
+diff -Nru glam2-1064/debian/rules glam2-1064/debian/rules
+--- glam2-1064/debian/rules	2019-03-18 07:16:36.000000000 +0000
++++ glam2-1064/debian/rules	2019-03-18 07:16:36.000000000 +0000
+@@ -12,8 +12,8 @@
+ 
+ override_dh_auto_build:
+ 	dh_auto_build
+-	make --directory=$(SRCDIR) glam2fft
+-	make --directory=purge
++	dh_auto_build -B $(SRCDIR) -- glam2fft
++	dh_auto_build -B purge
+ 
+ override_dh_compress:
+ 	dh_compress --exclude=.pdf
