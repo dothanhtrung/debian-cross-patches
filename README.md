@@ -4,4 +4,4 @@ This repository contains patches for fixing cross-build issues in Debian source 
 
 For how to set up build environment and use the patches, please check [HOWTO.md](./HOWTO.md).
 
-Cross-build status is summarized in: https://dothanhtrung.github.io/sbuild/
+Cross-build status is summarized in: https://tswcos.github.io/sbuild/
